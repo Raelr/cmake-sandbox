@@ -27,3 +27,7 @@ add_executable(CMAKETest ProjectA.cpp)
 target_link_libraries(CMAKETest PUBLIC ${EXTRA_LIBS})
 # Set the project to search the following directories for the files. 
 target_include_directories(CMAKETest PUBLIC "${PROJECT_BINARY_DIR}")
+
+install(TARGETS CMAKETest DESTINATION bin)
+install(FILES "${PROJECT_BINARY_DIR}/ProjectA.h"
+        DESTINATION include)

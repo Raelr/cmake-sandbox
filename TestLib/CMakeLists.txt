@@ -6,3 +6,6 @@ add_library(TestLib test.cpp)
 target_include_directories(TestLib 
         INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
         )
+
+install(TARGETS TestLib DESTINATION lib)
+install(FILES test.h DESTINATION include)
