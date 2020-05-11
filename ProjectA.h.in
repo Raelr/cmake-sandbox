@@ -1,0 +1,4 @@
+// the configured options and settings for CMAKETest
+#cmakedefine USE_TEST
+#define CMAKETest_VERSION_MAJOR @CMAKETest_VERSION_MAJOR@ 
+#define CMAKETest_VERSION_MINOR @CMAKETest_VERSION_MINOR@
