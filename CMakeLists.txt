@@ -54,3 +54,13 @@ add_test(NAME Runs COMMAND CMAKETest)
 
 # check_symbol_exists(log "math.h" HAVE_LOG)
 # check_symbol_exists(exp "math.h" HAVE_EXP)
+
+# --------------- INSTALLER -----------------------------------------
+
+# includes any runtime libraries needed by the project. 
+include(InstallRequiredSystemLibraries)
+# Sets the version of the project.
+set(CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+# include the CPack module for building. 
+include(CPack)
