@@ -30,4 +30,12 @@ target_include_directories(CMAKETest PUBLIC "${PROJECT_BINARY_DIR}")
 
 install(TARGETS CMAKETest DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/ProjectA.h"
-        DESTINATION include)
+        DESTINATION include
+        )
+
+# ------------ TESTING ----------------------------------------------
+
+enable_testing()
+
+# Tests whether the application runs.
+add_test(NAME Runs COMMAND CMAKETest)
