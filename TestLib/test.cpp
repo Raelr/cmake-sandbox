@@ -1,7 +1,7 @@
 #include "test.h"
 #include <iostream>
 #include <cmath>
-#include "ProjectA.h"
+// #include "ProjectA.h"
 
 void test() {
 
