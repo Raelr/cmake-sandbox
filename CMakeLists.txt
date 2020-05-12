@@ -33,9 +33,21 @@ install(FILES "${PROJECT_BINARY_DIR}/ProjectA.h"
         DESTINATION include
         )
 
-# ------------ TESTING ----------------------------------------------
+# ------------------- TESTING ---------------------------------------
 
 enable_testing()
 
 # Tests whether the application runs.
 add_test(NAME Runs COMMAND CMAKETest)
+
+# -------------- SYSTEM INTROSPECTION ------------------------------- 
+
+# Allows us to check if specific methods or symbols exist in a file.
+include(CheckSymbolExists)
+
+# Checks the cmath library for whether the 'log' and 'exp' symbols exist.
+# binds the output to the macros: HAVE_LOG and HAVE_EXP
+set(CMAKE_REQUIRED_LIBRARIES "m")
+
+check_symbol_exists(log "math.h" HAVE_LOG)
+check_symbol_exists(exp "math.h" HAVE_EXP)

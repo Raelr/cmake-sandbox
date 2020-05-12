@@ -1,4 +1,8 @@
-// the configured options and settings for CMAKETest
+// Macros for checing if testLib library should be used
 #cmakedefine USE_TEST
+// Macros for defining whether Log and Exp are available:
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+// Macros which take the project version defined in CLION.
 #define CMAKETest_VERSION_MAJOR @CMAKETest_VERSION_MAJOR@ 
 #define CMAKETest_VERSION_MINOR @CMAKETest_VERSION_MINOR@
