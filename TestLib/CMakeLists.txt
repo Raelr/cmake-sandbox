@@ -9,6 +9,8 @@ target_include_directories(TestLib
         # PRIVATE ${CMAKE_BINARY_DIR}
         )
 
+target_compile_definitions(TestLib PRIVATE "EXPORTING_TEST")
+
 # Define locations for the library to be built to.  
 install(TARGETS TestLib DESTINATION lib)
 install(FILES test.h DESTINATION include)

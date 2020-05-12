@@ -5,33 +5,41 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+
 # Set the project name
 project(CMAKETest VERSION 0.1)
 
-option(USE_TEST "Use the test implementation" ON)
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+
+#option(USE_TEST "Use the test implementation" ON)
 
 # Set the configuration file (which defines macros)
 configure_file(ProjectA.h.in ProjectA.h)
 
 # Use conditional formatting to include project.
-if (USE_TEST)
+#if (USE_TEST)
     # Adds TestLib as a subdirectory from which to take code.
-    add_subdirectory(TestLib)
-    list(APPEND EXTRA_LIBS TestLib)
-endif()
+    #add_subdirectory(TestLib)
+    #list(APPEND EXTRA_LIBS TestLib)
+#endif()
+
+add_subdirectory(TestLib)
 
 # Defines which file will act as the entrypoint. 
 add_executable(CMAKETest ProjectA.cpp)
 
 # Link TestLib with the current project. 
-target_link_libraries(CMAKETest PUBLIC ${EXTRA_LIBS})
+target_link_libraries(CMAKETest PUBLIC TestLib)
 # Set the project to search the following directories for the files. 
 target_include_directories(CMAKETest PUBLIC "${PROJECT_BINARY_DIR}")
 
-install(TARGETS CMAKETest DESTINATION bin)
-install(FILES "${PROJECT_BINARY_DIR}/ProjectA.h"
-        DESTINATION include
-        )
+#install(TARGETS CMAKETest DESTINATION bin)
+#install(FILES "${PROJECT_BINARY_DIR}/ProjectA.h"
+#        DESTINATION include
+#        )
 
 # ------------------- TESTING ---------------------------------------
 
@@ -55,7 +63,7 @@ add_test(NAME Runs COMMAND CMAKETest)
 # check_symbol_exists(log "math.h" HAVE_LOG)
 # check_symbol_exists(exp "math.h" HAVE_EXP)
 
-# --------------- INSTALLER -----------------------------------------
+# --------------------- INSTALLER ------------------------------------
 
 # includes any runtime libraries needed by the project. 
 include(InstallRequiredSystemLibraries)

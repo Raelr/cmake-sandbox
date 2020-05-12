@@ -1,9 +1,7 @@
 #include <iostream>
 #include "ProjectA.h"
+#include "test.h"
 
-#ifdef USE_TEST
-    #include "test.h"
-#endif
 
 int main(int argc, char** argv) {
 
@@ -12,9 +10,7 @@ int main(int argc, char** argv) {
         std::cout << "Usage: " << argv[0] << " number " << std::endl;
     }
 
-    #ifdef USE_TEST
-        test();
-    #endif
+    testLib::test();
 
     return 0;
 }
